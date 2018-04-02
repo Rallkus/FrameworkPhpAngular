@@ -411,11 +411,26 @@ $( document ).ready(function() {
            datatype :'json',
            success: function(data){
              console.log(data);
+             $("#error_dropzone_size").hide();
+             $("#error_dropzone_extension").hide();
+             $("#error_dropzone_invalid").hide();
+             $("#error_dropzone").hide();
              var json = JSON.parse(data);
-             console.log(json.error.fecha);
              validate();
              if(json.error.fecha){
                $("#error_fecha").show();
+             }
+             if(json.error_prodpic=="size" || json.error_prodpic=="sizesize"){
+               $("#error_dropzone_size").show();
+             }
+             if(json.error_prodpic=="error"){
+               $("#error_dropzone").show();
+             }
+             if(json.error_prodpic=="extensiones" || json.error_prodpic=="sizeextensiones"){
+               $("#error_dropzone_extension").show();
+             }
+             if(json.error_prodpic=="invalid" || json.error_prodpic=="sizeinvalid"){
+               $("#error_dropzone_invalid").show();
              }
              if(json.success){
                window.location.href = json.redirect;

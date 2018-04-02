@@ -21,9 +21,9 @@ function upload_files() {
 
     if ($error_fitxer>0) { // El error 0 quiere decir que se subió el archivo correctamente
         switch ($error_fitxer){
-            case 1: $error .=  'The file size is too heavy <br>'; break;//Fitxer major que upload_max_filesize
-            case 2: $error .=  'The file size is too large <br>';break;//Fitxer major que max_file_size
-            case 3: $error .=  'File upload incomplete <br>';break;//Fitxer només parcialment pujat
+            case 1: $error .=  'size'; break;//Fitxer major que upload_max_filesize
+            case 2: $error .=  'size';break;//Fitxer major que max_file_size
+            case 3: $error .=  'error';break;//Fitxer només parcialment pujat
             //case 4: $error .=  'No has pujat cap fitxer <br>';break; //assignarem a l'us default-avatar
         }
     }
@@ -35,7 +35,7 @@ function upload_files() {
 
     ////////////////////////////////////////////////////////////////////////////
     if ($_FILES['file']['size'] > 55000 ){
-        $error .=  "Large File Size <br>";
+        $error .=  "size";
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -47,17 +47,17 @@ function upload_files() {
         ////////////////////////////////////////////////////////////////////////////
         @$extension = strtolower(end(explode('.', $_FILES['file']['name']))); // Obtenemos la extensión, en minúsculas para poder comparar
         if( ! in_array($extension, $extensiones)) {
-            $error .=  'Sólo se permite subir archivos con estas extensiones: ' . implode(', ', $extensiones).' <br>';
+            $error .=  'extensiones';
         }
         ////////////////////////////////////////////////////////////////////////////
         //getimagesize falla si $_FILES['avatar']['name'] === ""
         if (!@getimagesize($_FILES['file']['tmp_name'])){
-            $error .=  "Invalid Image File... <br>";
+            $error .=  "invalid";
         }
         ////////////////////////////////////////////////////////////////////////////
         list($width, $height, $type, $attr) = @getimagesize($_FILES['file']['tmp_name']);
         if ($width > 150 || $height > 150){
-            $error .=   "Maximum width and height exceeded. Please upload images below 100x100 px size <br>";
+            $error .=   "size";
         }
     }
         /*
