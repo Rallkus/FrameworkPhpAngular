@@ -326,6 +326,28 @@ function validate(){
 /* Fin funciones de validate */
 
 $( document ).ready(function() {
+  /* Cleaning the html or filling it */
+                $("#name").val('');
+                $("#price").val('');
+                $("#fecha_inicio").val('');
+                $("#fecha_final").val('');
+                fill_comunidades();
+                selectProvincias=$("#provincia");
+                selectMunicipio=$("#municipio");
+                selectProvincias.empty();
+                selectMunicipio.empty();
+                selectProvincias.append("<option value=0>- Seleccione provincia -</option>");
+                selectMunicipio.append("<option value=0>- Seleccione municipio -</option>");
+                $("#observaciones").val('');
+                var inputElements = document.getElementsByClassName('caracteristicas');
+                for (var i = 0; i < inputElements.length; i++) {
+                    if (inputElements[i].checked){
+                      console.log(inputElements[i]);
+                        inputElements[i].checked = false;
+                    }
+                }
+
+
   /* Post to php */
   var create=document.getElementById("create");
   create.onclick=function(){
