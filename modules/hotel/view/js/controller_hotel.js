@@ -154,35 +154,43 @@ function validate_fecha_final(){
   if(date===""){
     check = false;
     $("#error_fecha_final").show();
+    $("#error_fecha").hide();
     $("#error_fecha_final2").hide();
     $("#false_error_fecha_final").hide();
     if(validate_fecha_inicio()===1){
+      $("#error_fecha").hide();
       $("#error_fecha_inicio").show();
       $("#error_fecha_inicio2").hide();
       $("#false_error_fecha_inicio").hide();
     }else if(validate_fecha_inicio()===-1){
+      $("#error_fecha").hide();
       $("#error_fecha_inicio").hide();
       $("#error_fecha_inicio2").show();
       $("#false_error_fecha_inicio").hide();
     }else{
+      $("#error_fecha").hide();
       $("#error_fecha_inicio").hide();
       $("#error_fecha_inicio2").hide();
       $("#false_error_fecha_inicio").show();
     }
   }else if (!val_dates.test($("#fecha_final").val())) {
     check = false;
+    $("#error_fecha").hide();
     $("#error_fecha_final").hide();
     $("#error_fecha_final2").show();
     $("#false_error_fecha_final").hide();
     if(validate_fecha_inicio()===1){
+      $("#error_fecha").hide();
       $("#error_fecha_inicio").show();
       $("#error_fecha_inicio2").hide();
       $("#false_error_fecha_inicio").hide();
     }else if(validate_fecha_inicio()===-1){
+      $("#error_fecha").hide();
       $("#error_fecha_inicio").hide();
       $("#error_fecha_inicio2").show();
       $("#false_error_fecha_inicio").hide();
     }else{
+      $("#error_fecha").hide();
       $("#error_fecha_inicio").hide();
       $("#error_fecha_inicio2").hide();
       $("#false_error_fecha_inicio").show();
@@ -190,6 +198,7 @@ function validate_fecha_final(){
   }else{
     /* TODO regular que sea una fecha válida*/
     if(validate_fecha_inicio()===1){
+      $("#error_fecha").hide();
       check = false;
       $("#error_fecha_inicio").show();
       $("#error_fecha_inicio2").hide();
@@ -198,6 +207,7 @@ function validate_fecha_final(){
       $("#error_fecha_final2").hide();
       $("#false_error_fecha_final").show();
     }else if(validate_fecha_inicio()===-1){
+      $("#error_fecha").hide();
       check = false;
       $("#error_fecha_inicio").hide();
       $("#error_fecha_inicio2").show();
@@ -206,6 +216,7 @@ function validate_fecha_final(){
       $("#error_fecha_final2").hide();
       $("#false_error_fecha_final").show();
     }else{
+      $("#error_fecha").hide();
       $("#error_fecha_inicio").hide();
       $("#error_fecha_inicio2").hide();
       $("#false_error_fecha_inicio").hide();
@@ -318,7 +329,8 @@ $( document ).ready(function() {
   /* Post to php */
   var create=document.getElementById("create");
   create.onclick=function(){
-    if(validate()){
+    //if(validate()){
+    if(true){
       var name = $("#name").val();
       var price = $("#price").val();
       var fecha_inicio = $("#fecha_inicio").val();
@@ -377,7 +389,15 @@ $( document ).ready(function() {
            datatype :'json',
            success: function(data){
              console.log(data);
-
+             var json = JSON.parse(data);
+             console.log(json.error.fecha);
+             validate();
+             if(json.error.fecha){
+               $("#error_fecha").show();
+             }
+             if(json.success){
+               window.location.href = json.redirect;
+             }
 
 
            }

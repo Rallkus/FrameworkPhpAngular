@@ -20,15 +20,15 @@ if ((isset($_POST['name']))) {
 function alta_hotel(){
   $jsondata = array();
   $hotelJSON = $_POST;
-  //$result= validate_products($producstJSON);
-  $result = true;
+  $result= validate_hotel($hotelJSON);
+  //$result = true;
 
   if (empty($_SESSION['result_prodpic'])){
       $_SESSION['result_prodpic'] = array('result' => true, 'error' => "", "data" => "/Hotel/media/default-avatar.png");
   }
   $result_prodpic = $_SESSION['result_prodpic'];
 
-  if(($result) && ($result_prodpic['result'])) {
+  if(($result['result']) && ($result_prodpic['result'])) {
 
       $arrArgument = array(
         'name' => $hotelJSON['name'],
@@ -62,18 +62,19 @@ function alta_hotel(){
           $message = "Problem ocurred registering a porduct";
       }
 
-      $_SESSION['product'] = $arrArgument;
+      $_SESSION['hotel'] = $arrArgument;
       $_SESSION['message'] = $message;
-      $callback="index.php?module=hotel&view=create_hotel";
+      $callback="index.php";
 
       $jsondata['success'] = true;
       $jsondata['redirect'] = $callback;
+      $jsondata['error'] = $result['error'];
       echo json_encode($jsondata);
       exit;
   }else{
     $jsondata['success'] = false;
-    //$jsondata['error'] = $result['error'];
-    $jsondata['error'] = true;
+    $jsondata['error'] = $result['error'];
+    //$jsondata['error'] = true;
     $jsondata['error_prodpic'] = $result_prodpic['error'];
 
     $jsondata['success1'] = false;
@@ -81,7 +82,7 @@ function alta_hotel(){
         $jsondata['success1'] = true;
         $jsondata['prodpic'] = $result_prodpic['data'];
     }
-    header('HTTP/1.0 400 Bad error');
+    //header('HTTP/1.0 400 Bad error');
     echo json_encode($jsondata);
   }//End else
 }//End alta products
@@ -126,12 +127,12 @@ function close_session() {
 if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
     $jsondata = array();
 
-    if (isset($_SESSION['product'])) {
-        $jsondata["product"] = $_SESSION['product'];
+    if (isset($_SESSION['hotel'])) {
+        $jsondata["hotel"] = $_SESSION['hotel'];
         echo json_encode($jsondata);
         exit;
     } else {
-        $jsondata["product"] = "";
+        $jsondata["hotel"] = "";
         echo json_encode($jsondata);
         exit;
     }

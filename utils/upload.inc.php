@@ -74,9 +74,7 @@ function upload_files() {
     ////////////////////////////////////////////////////////////////////////////
     $upfile = $_SERVER['DOCUMENT_ROOT'].'/Hotel/media/'.$_FILES['file']['name'];//Cambiado avatar por file
     if (is_uploaded_file($_FILES['file']['tmp_name'])){
-      echo "hola";
         if (is_file($_FILES['file']['tmp_name'])) {
-          echo "hols";
             $idUnico = rand();
             $nombreFichero = $idUnico."-".$_FILES['file']['name'];
             //$nombreFichero = $_FILES['file']['name'];
@@ -90,15 +88,12 @@ function upload_files() {
     }
 
     $i=0;
-    echo $error;
     if ($error == "") {
         if ($copiarFichero) {
             if (!move_uploaded_file($_FILES['file']['tmp_name'], $upfile)) {
-              echo "aa";
                 $error .= "<p>Error al subir la imagen.</p>";
                 return $return=array('result'=>false,'error'=>$error,'data'=>"");
             }
-            echo "aaa";
             //We need edit $upfile because now i don't need absolute route.
             $upfile = '/Hotel/media/'.$nombreFichero;
             return $return=array('result'=>true , 'error'=>$error,'data'=>$upfile);
