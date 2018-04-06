@@ -12,7 +12,7 @@ require_once("paths.php");
 //include ('utils/utils.inc.php');
 
 if (!isset($_GET['module'])){
-    require_once("modules/home/controller/controller_home.class.html");
+    require_once("modules/home/view/home.html");
 } else if((isset($_GET['module'])) && (!isset($_GET['view']))){
     require_once("modules/".$_GET['module']."/controller/controller_" .$_GET['module']. ".class.php");
 }

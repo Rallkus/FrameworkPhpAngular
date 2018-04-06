@@ -7,6 +7,7 @@
         $modelClass = $model_name;
 
         if (!method_exists($modelClass, $function)){
+          echo "a";
             throw new Exception();
         }
 
