@@ -27,6 +27,9 @@ class home_bll{
     public function obtain_best_offers_BLL(){
       return $this->dao->obtain_best_offers($this->db);
     }
+    public function obtain_offer_BLL($arrArgument){
+      return $this->dao->obtain_offer($this->db, $arrArgument);
+    }
 
     /*public function create_hotel_BLL($arrArgument){
       return $this->dao->create_hotel_DAO($this->db, $arrArgument);

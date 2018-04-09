@@ -22,6 +22,9 @@ class home_model {
     public function obtain_best_offers(){
         return $this->bll->obtain_best_offers_BLL();
     }
+    public function obtain_offer($arrArgument){
+        return $this->bll->obtain_offer_BLL($arrArgument);
+    }
     /*
     public function create_hotel_offer($arrArgument) {
         return $this->bll->create_hotel_BLL($arrArgument);
