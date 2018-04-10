@@ -20,8 +20,18 @@ class homeDAO {
       $stmt = $db->ejecutar($sql);
       return $db->listar($stmt);
     }
+    public function obtain_names($db){
+      $sql = "SELECT nombre FROM oferta_hotel";
+      $stmt = $db->ejecutar($sql);
+      return $db->listar($stmt);
+    }
     public function obtain_offer($db, $arrArgument){
       $sql = "SELECT * FROM oferta_hotel WHERE id='$arrArgument'";
+      $stmt = $db->ejecutar($sql);
+      return $db->listar($stmt);
+    }
+    public function list_offers($db, $arrArgument){
+      $sql = "SELECT * FROM oferta_hotel WHERE nombre='$arrArgument'";
       $stmt = $db->ejecutar($sql);
       return $db->listar($stmt);
     }

@@ -15,3 +15,14 @@ if(isset($_POST['op']) && $_POST['op']=="details"){
   $arrValue = loadModel($path_model, "home_model", "obtain_offer", $arrArgument);
   echo json_encode($arrValue);
 }
+if(isset($_POST['op']) && $_POST['op']=="name"){
+  $path_model = $_SERVER['DOCUMENT_ROOT'] . '/Hotel/modules/home/model/model/';
+  $arrValue = loadModel($path_model, "home_model", "obtain_names");
+  echo json_encode($arrValue);
+}
+if(isset($_POST['op']) && $_POST['op']=="search"){
+  $path_model = $_SERVER['DOCUMENT_ROOT'] . '/Hotel/modules/home/model/model/';
+  $arrArgument=$_POST['nombre'];
+  $arrValue = loadModel($path_model, "home_model", "list_offers", $arrArgument);
+  echo json_encode($arrValue);
+}
