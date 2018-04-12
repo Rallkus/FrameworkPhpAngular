@@ -4,12 +4,43 @@ var loading = false;
 var current_page = 2;
 var oldscroll = 0;
 var total_pages = 500;
+var scroll = true;
+var hotel = [];
 
 $( document ).ready(function() {
+
+	/*Pagination*/
+	/*dataTosend='op='+"page"+'&page='+num;
+	$.ajax({
+		type: "POST",
+		url: "modules/home/controller/controller_home.class.php",
+		data: dataTosend,
+		datatype :'json',
+		success: function(data){
+			console.log(data);
+			var json = JSON.parse(data);
+			var html = $(".posts").html();
+			json.forEach(function(element) {
+				html=html+'<article>'+
+					'<a class="image"><img src="'+element.imagen+'" alt="" /></a>'+
+					'<h3>'+element.nombre+'</h3>'+
+					'<p>'+element.fecha_entrada+' - '+ element.fecha_salida+'</p>'+
+					'<p>'+element.municipio+', '+ element.provincia+', '+element.comunidad+'</p>'+
+					'<ul class="actions">'+
+					'<li><div class="button id" id='+element.id+'>More</div></li>'+
+					'</ul>'+
+				'</article>';
+			});
+			$(".posts").html(html);
+			current_page++;
+		}});*/
+
+
+	/*end Pagination*/
 /*scroll*/
 
 $(window).scroll(function() { //detect page scroll
-				if($(window).scrollTop() + $(window).height() + 1 >= $(document).height()){
+				if(($(window).scrollTop() + $(window).height() + 1 >= $(document).height()) && scroll){
           dataTosend='op='+"scroll"+'&page='+current_page;
           $.ajax({
             type: "POST",
@@ -17,7 +48,6 @@ $(window).scroll(function() { //detect page scroll
             data: dataTosend,
             datatype :'json',
             success: function(data){
-              console.log(data);
               var json = JSON.parse(data);
               var html = $(".posts").html();
               json.forEach(function(element) {
@@ -50,7 +80,6 @@ $.ajax({
     json.forEach(function(element) {
       names.push(element.nombre);
     });
-    console.log(names);
     $( function() {
     $( "#query" ).autocomplete({
       source: names,
@@ -63,20 +92,50 @@ $.ajax({
           data: dataTosend,
           datatype :'json',
           success: function(data){
-            var json = JSON.parse(data);
+            hotel = JSON.parse(data);
+						var pages = 0;
+						if(hotel.length % 6 != 0){
+							pages = Math.floor(hotel.length/6)+1;
+						}else{
+							pages = hotel.length/6;
+						}
+						$('#show_paginator').show();
+						$('#show_paginator').bootpag({
+						      total: pages,
+						      page: 1,
+						      maxVisible: 5
+						}).on('page', function(event, num)
+						{
+							var i = 0;
+							html = "";
+							hotel.forEach(function(element) {
+								if(i>=((num-1)*6) && (num*6)>i){
+									html=html+'<article>'+
+		                '<a class="image"><img src="'+element.imagen+'" alt="" /></a>'+
+		                '<h3>'+element.nombre+'</h3>'+
+		                '<p>'+element.fecha_entrada+' - '+ element.fecha_salida+'</p>'+
+		                '<p>'+element.municipio+', '+ element.provincia+', '+element.comunidad+'</p>'+
+		              '</article>';
+								}
+								i++;
+	            });
+	            $(".posts").html(html);
+						});
             var html = "";
-            json.forEach(function(element) {
+						var i = 0;
+            hotel.forEach(function(element) {
+							if(i<=5){
+
               html=html+'<article>'+
                 '<a class="image"><img src="'+element.imagen+'" alt="" /></a>'+
                 '<h3>'+element.nombre+'</h3>'+
                 '<p>'+element.fecha_entrada+' - '+ element.fecha_salida+'</p>'+
                 '<p>'+element.municipio+', '+ element.provincia+', '+element.comunidad+'</p>'+
-                '<ul class="actions">'+
-                '<li><div class="button id" id='+element.id+'>More</div></li>'+
-                '</ul>'+
-              '</article>';
+              '</article>';}
+							i++;
             });
             $(".posts").html(html);
+						scroll = false;
             $(".id").on("click", function(e){
               var id=this.getAttribute('id');
               dataTosend='op='+"details"+"&id="+id;
@@ -87,8 +146,6 @@ $.ajax({
                 datatype :'json',
                 success: function(data){
                   json = JSON.parse(data);
-                  //var time = json.estimated_time;
-                         //var str= time.split('.');
                          var info = [];
                          var image = "";
                          json.forEach(function(element) {
