@@ -1,7 +1,43 @@
 //var button="";
 var dataTosend="";
-$( document ).ready(function() {
+var loading = false;
+var current_page = 2;
+var oldscroll = 0;
+var total_pages = 500;
 
+$( document ).ready(function() {
+/*scroll*/
+
+$(window).scroll(function() { //detect page scroll
+				if($(window).scrollTop() + $(window).height() + 1 >= $(document).height()){
+          dataTosend='op='+"scroll"+'&page='+current_page;
+          $.ajax({
+            type: "POST",
+            url: "modules/home/controller/controller_home.class.php",
+            data: dataTosend,
+            datatype :'json',
+            success: function(data){
+              console.log(data);
+              var json = JSON.parse(data);
+              var html = $(".posts").html();
+              json.forEach(function(element) {
+                html=html+'<article>'+
+                  '<a class="image"><img src="'+element.imagen+'" alt="" /></a>'+
+                  '<h3>'+element.nombre+'</h3>'+
+                  '<p>'+element.fecha_entrada+' - '+ element.fecha_salida+'</p>'+
+                  '<p>'+element.municipio+', '+ element.provincia+', '+element.comunidad+'</p>'+
+                  '<ul class="actions">'+
+                  '<li><div class="button id" id='+element.id+'>More</div></li>'+
+                  '</ul>'+
+                '</article>';
+              });
+              $(".posts").html(html);
+							current_page++;
+            }});
+        }
+      });
+/*end scroll
+*/
 dataTosend='op='+"name";
 $.ajax({
   type: "POST",
@@ -36,12 +72,12 @@ $.ajax({
                 '<p>'+element.fecha_entrada+' - '+ element.fecha_salida+'</p>'+
                 '<p>'+element.municipio+', '+ element.provincia+', '+element.comunidad+'</p>'+
                 '<ul class="actions">'+
-                '<li><div class="button" id='+element.id+'>More</div></li>'+
+                '<li><div class="button id" id='+element.id+'>More</div></li>'+
                 '</ul>'+
               '</article>';
             });
             $(".posts").html(html);
-            $(".button").on("click", function(e){
+            $(".id").on("click", function(e){
               var id=this.getAttribute('id');
               dataTosend='op='+"details"+"&id="+id;
               $.ajax({
@@ -127,12 +163,13 @@ $.ajax({
           '<p>'+element.fecha_entrada+' - '+ element.fecha_salida+'</p>'+
           '<p>'+element.municipio+', '+ element.provincia+', '+element.comunidad+'</p>'+
           '<ul class="actions">'+
-          '<li><div class="button" id='+element.id+'>More</div></li>'+
+          '<li><div class="button id" id='+element.id+'>More</div></li>'+
           '</ul>'+
         '</article>';
       });
+
       $(".posts").html(html);
-      $(".button").on("click", function(e){
+      $(".id").on("click", function(e){
         var id=this.getAttribute('id');
         dataTosend='op='+"details"+"&id="+id;
         $.ajax({

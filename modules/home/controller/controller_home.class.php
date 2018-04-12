@@ -9,6 +9,12 @@ if(isset($_POST['op']) && $_POST['op']=="list"){
   $arrValue = loadModel($path_model, "home_model", "obtain_best_offers");
   echo json_encode($arrValue);
 }
+if(isset($_POST['op']) && $_POST['op']=="scroll"){
+  $path_model = $_SERVER['DOCUMENT_ROOT'] . '/Hotel/modules/home/model/model/';
+  $arrArgument = $_POST['page'];
+  $arrValue = loadModel($path_model, "home_model", "obtain_scroll", $arrArgument);
+  echo json_encode($arrValue);
+}
 if(isset($_POST['op']) && $_POST['op']=="details"){
   $arrArgument=$_POST['id'];
   $path_model = $_SERVER['DOCUMENT_ROOT'] . '/Hotel/modules/home/model/model/';

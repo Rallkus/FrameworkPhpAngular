@@ -20,6 +20,13 @@ class homeDAO {
       $stmt = $db->ejecutar($sql);
       return $db->listar($stmt);
     }
+    public function obtain_scroll($db, $arrArgument){
+      $ini = ($arrArgument-1)*6;
+      $end = $arrArgument*6;
+      $sql = "SELECT * FROM oferta_hotel ORDER BY `oferta_hotel`.`estrellas` DESC LIMIT $ini, $end";
+      $stmt = $db->ejecutar($sql);
+      return $db->listar($stmt);
+    }
     public function obtain_names($db){
       $sql = "SELECT nombre FROM oferta_hotel";
       $stmt = $db->ejecutar($sql);

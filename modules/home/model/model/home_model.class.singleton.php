@@ -28,6 +28,9 @@ class home_model {
     public function obtain_offer($arrArgument){
         return $this->bll->obtain_offer_BLL($arrArgument);
     }
+    public function obtain_scroll($arrArgument){
+        return $this->bll->obtain_scroll_BLL($arrArgument);
+    }
     public function list_offers($arrArgument){
         return $this->bll->list_offers_BLL($arrArgument);
     }

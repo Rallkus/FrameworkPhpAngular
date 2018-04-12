@@ -27,6 +27,9 @@ class home_bll{
     public function obtain_best_offers_BLL(){
       return $this->dao->obtain_best_offers($this->db);
     }
+    public function obtain_scroll_BLL($arrArgument){
+      return $this->dao->obtain_scroll($this->db, $arrArgument);
+    }
     public function obtain_names_BLL(){
       return $this->dao->obtain_names($this->db);
     }
