@@ -1,11 +1,5 @@
 <?php
 
-$path = $_SERVER['DOCUMENT_ROOT'] . '/Hotel/';
-//define('SITE_ROOT', $path);
-define('MODEL_PATH', SITE_ROOT . 'model/');
-
-require(MODEL_PATH . "Db.class.singleton.php");
-require(SITE_ROOT . "modules/hotel/model/DAO/hotel_dao.class.singleton.php");
 
 class hotel_bll{
     private $dao;
@@ -13,7 +7,7 @@ class hotel_bll{
     static $_instance;
 
     private function __construct() {
-        $this->dao = hotelDAO::getInstance();
+        $this->dao = hotel_DAO::getInstance();
         $this->db = Db::getInstance();
     }
 

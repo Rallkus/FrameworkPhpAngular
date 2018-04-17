@@ -1,0 +1,10 @@
+<modules>
+    <module>
+        <name>home</name>
+        <uri>home</uri>
+    </module>
+    <module>
+        <name>hotel</name>
+        <uri>hotel</uri>
+    </module>
+</modules>

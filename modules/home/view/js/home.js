@@ -1,4 +1,3 @@
-//var button="";
 var dataTosend="";
 var loading = false;
 var current_page = 2;
@@ -9,42 +8,13 @@ var hotel = [];
 
 $( document ).ready(function() {
 
-	/*Pagination*/
-	/*dataTosend='op='+"page"+'&page='+num;
-	$.ajax({
-		type: "POST",
-		url: "modules/home/controller/controller_home.class.php",
-		data: dataTosend,
-		datatype :'json',
-		success: function(data){
-			console.log(data);
-			var json = JSON.parse(data);
-			var html = $(".posts").html();
-			json.forEach(function(element) {
-				html=html+'<article>'+
-					'<a class="image"><img src="'+element.imagen+'" alt="" /></a>'+
-					'<h3>'+element.nombre+'</h3>'+
-					'<p>'+element.fecha_entrada+' - '+ element.fecha_salida+'</p>'+
-					'<p>'+element.municipio+', '+ element.provincia+', '+element.comunidad+'</p>'+
-					'<ul class="actions">'+
-					'<li><div class="button id" id='+element.id+'>More</div></li>'+
-					'</ul>'+
-				'</article>';
-			});
-			$(".posts").html(html);
-			current_page++;
-		}});*/
-
-
-	/*end Pagination*/
-/*scroll*/
 
 $(window).scroll(function() { //detect page scroll
 				if(($(window).scrollTop() + $(window).height() + 1 >= $(document).height()) && scroll){
           dataTosend='op='+"scroll"+'&page='+current_page;
           $.ajax({
             type: "POST",
-            url: "modules/home/controller/controller_home.class.php",
+            url: "../home/scroll",
             data: dataTosend,
             datatype :'json',
             success: function(data){
@@ -71,10 +41,11 @@ $(window).scroll(function() { //detect page scroll
 dataTosend='op='+"name";
 $.ajax({
   type: "POST",
-  url: "modules/home/controller/controller_home.class.php",
+  url: "../home/name",
   data: dataTosend,
   datatype :'json',
   success: function(data){
+		console.log(data);
     var json = JSON.parse(data);
     var names = [];
     json.forEach(function(element) {
@@ -88,7 +59,7 @@ $.ajax({
         dataTosend='op='+"search"+"&nombre="+event.item.value;
         $.ajax({
           type: "POST",
-          url: "modules/home/controller/controller_home.class.php",
+          url: "../home/search",
           data: dataTosend,
           datatype :'json',
           success: function(data){
@@ -141,7 +112,7 @@ $.ajax({
               dataTosend='op='+"details"+"&id="+id;
               $.ajax({
                 type: "POST",
-                url: "modules/home/controller/controller_home.class.php",
+                url: "../home/details",
                 data: dataTosend,
                 datatype :'json',
                 success: function(data){
@@ -207,7 +178,7 @@ $.ajax({
   dataTosend='op='+"list";
   $.ajax({
     type: "POST",
-    url: "modules/home/controller/controller_home.class.php",
+    url: "../home/list",
     data: dataTosend,
     datatype :'json',
     success: function(data){
@@ -231,13 +202,11 @@ $.ajax({
         dataTosend='op='+"details"+"&id="+id;
         $.ajax({
           type: "POST",
-          url: "modules/home/controller/controller_home.class.php",
+          url: "../home/details/",
           data: dataTosend,
           datatype :'json',
           success: function(data){
             json = JSON.parse(data);
-            //var time = json.estimated_time;
-                   //var str= time.split('.');
                    var info = [];
                    var image = "";
                    json.forEach(function(element) {

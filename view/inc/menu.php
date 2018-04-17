@@ -19,8 +19,8 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.php">Homepage</a></li>
-										<li><a href="index.php?module=hotel&view=create_hotel">Create</a></li>
+										<li><a href="<?php amigable('?module=home'); ?>">Homepage</a></li>
+										<li><a href="<?php amigable('?module=hotel'); ?>">Create</a></li>
 										<li><a href="elements.html">Elements</a></li>
 										<li>
 											<span class="opener">Submenu</span>

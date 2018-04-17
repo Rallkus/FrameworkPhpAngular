@@ -2,7 +2,7 @@
 //echo json_encode("products_dao.class.singleton.php");
 //exit;
 
-class hotelDAO {
+class hotel_DAO {
     static $_instance;
 
     private function __construct() {

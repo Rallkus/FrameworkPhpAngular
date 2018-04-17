@@ -1,4 +1,102 @@
 <?php
+class controller_hotel {
+  function __construct() {
+      include(FUNCTIONS_HOTEL . "functions_hotel.inc.php");
+    }
+    function begin() {
+        require_once(VIEW_PATH_INC . "header.php");
+        loadView('modules/hotel/view/', 'create_hotel.html');
+        require_once(VIEW_PATH_INC . "footer.html");
+        require_once(VIEW_PATH_INC . "menu.php");
+    }
+    function upload() {
+      $result_prodpic = upload_files();
+      $_SESSION['result_prodpic'] = $result_prodpic;
+      echo $_SESSION['result_prodpic'];
+        //echo json_encode($result_prodpic);
+    }
+    function validate() {
+      $jsondata = array();
+      $hotelJSON = $_POST;
+      $result= validate_hotel($hotelJSON);
+      //$result = true;
+
+      if (empty($_SESSION['result_prodpic'])){
+          $_SESSION['result_prodpic'] = array('result' => true, 'error' => "", "data" => "/Hotel/media/default-avatar.png");
+      }
+      $result_prodpic = $_SESSION['result_prodpic'];
+
+      if(($result['result']) && ($result_prodpic['result'])) {
+
+          $arrArgument = array(
+            'name' => $hotelJSON['name'],
+            'price' => $hotelJSON['price'],
+            'fecha_inicio' => $hotelJSON['fecha_inicio'],
+            'fecha_final' => $hotelJSON['fecha_final'],
+            'valoracion' => $hotelJSON['valoracion'],
+            'observaciones' => $hotelJSON['observaciones'],
+            'comunidad' => $hotelJSON['comunidad'],
+            'provincia' => $hotelJSON['provincia'],
+            'municipio' => $hotelJSON['municipio'],
+            'wifi' => $hotelJSON['wifi'],
+            'piscina' => $hotelJSON['piscina'],
+            'playa' => $hotelJSON['playa'],
+            'actividades' => $hotelJSON['actividades'],
+            'comida' => $hotelJSON['comida'],
+            'spa' => $hotelJSON['spa'],
+            'imagen' => $result_prodpic['data']
+          );
+          //$arrValue=true;
+
+          $arrValue = false;
+          $arrValue = loadModel(MODEL_HOTEL, "hotel_model", "create_hotel_offer", $arrArgument);
+          //echo json_encode($arrValue);
+          //die();
+
+          if ($arrValue){
+              $message = "Product has been successfull registered";
+          }else{
+              $message = "Problem ocurred registering a porduct";
+          }
+
+          $_SESSION['hotel'] = $arrArgument;
+          $_SESSION['message'] = $message;
+          $callback="../home/";
+
+          $jsondata['success'] = true;
+          $jsondata['redirect'] = $callback;
+          $jsondata['error'] = $result['error'];
+          echo json_encode($jsondata);
+          exit;
+      }else{
+        $jsondata['success'] = false;
+        $jsondata['error'] = $result['error'];
+        //$jsondata['error'] = true;
+        $jsondata['error_prodpic'] = $result_prodpic['error'];
+
+        $jsondata['success1'] = false;
+        if ($result_prodpic['result']) {
+            $jsondata['success1'] = true;
+            $jsondata['prodpic'] = $result_prodpic['data'];
+        }
+        //header('HTTP/1.0 400 Bad error');
+        echo json_encode($jsondata);
+      }//End else
+    }//End alta products
+    function delete() {
+      //echo json_encode("Hello world from delete in controller_products.class.php");
+      $_SESSION['result_prodpic'] = array();
+      $result = remove_files();
+      if($result === true){
+        echo json_encode(array("res" => true));
+      }else{
+        echo json_encode(array("res" => false));
+      }
+      //echo json_decode($result);
+    }
+  }
+
+/*
 session_start();
 include ($_SERVER['DOCUMENT_ROOT'] . "/Hotel/modules/hotel/utils/functions_hotel.inc.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/Hotel/utils/upload.inc.php");

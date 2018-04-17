@@ -1,19 +1,12 @@
 <?php
 
-$path = $_SERVER['DOCUMENT_ROOT'] . '/Hotel/';
-//define('SITE_ROOT', $path);
-define('MODEL_PATH', SITE_ROOT . 'model/');
-
-require(MODEL_PATH . "Db.class.singleton.php");
-require(SITE_ROOT . "modules/home/model/DAO/home_dao.class.singleton.php");
-
 class home_bll{
     private $dao;
     private $db;
     static $_instance;
 
     private function __construct() {
-        $this->dao = homeDAO::getInstance();
+        $this->dao = home_DAO::getInstance();
         $this->db = Db::getInstance();
     }
 

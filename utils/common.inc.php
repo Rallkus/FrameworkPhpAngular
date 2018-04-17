@@ -7,7 +7,6 @@
         $modelClass = $model_name;
 
         if (!method_exists($modelClass, $function)){
-          echo "a";
             throw new Exception();
         }
 
@@ -19,3 +18,15 @@
         throw new Exception();
     }
   }
+
+
+  function loadView($rutaVista = '', $templateName = '', $arrPassValue = '') {
+    $view_path = $rutaVista . $templateName;
+    $arrData = '';
+
+    if (file_exists($view_path)) {
+        include_once($view_path);
+    } else {
+
+    }
+}

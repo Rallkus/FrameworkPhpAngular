@@ -1,9 +1,4 @@
 <?php
-//echo json_encode("products model class");
-//exit;
-$path = $_SERVER['DOCUMENT_ROOT'] . '/Hotel/';
-define('SITE_ROOT', $path);
-require(SITE_ROOT . "modules/hotel/model/BLL/hotel_bll.class.singleton.php");
 
 class hotel_model {
     private $bll;

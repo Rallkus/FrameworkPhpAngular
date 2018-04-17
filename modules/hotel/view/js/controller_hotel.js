@@ -342,7 +342,6 @@ $( document ).ready(function() {
                 var inputElements = document.getElementsByClassName('caracteristicas');
                 for (var i = 0; i < inputElements.length; i++) {
                     if (inputElements[i].checked){
-                      console.log(inputElements[i]);
                         inputElements[i].checked = false;
                     }
                 }
@@ -406,15 +405,15 @@ $( document ).ready(function() {
       var dataTosend='name='+name+'&price='+price+'&fecha_inicio='+fecha_inicio+'&fecha_final='+fecha_final+'&valoracion='+valoracion+'&observaciones='+observaciones+'&comunidad='+comunidad+'&provincia='+provincia+'&wifi='+wifi+'&piscina='+piscina+'&playa='+playa+'&actividades='+actividades+'&comida='+comida+'&spa='+spa+'&municipio='+municipio;
       $.ajax({
            type: "POST",
-           url: "modules/hotel/controller/controller_hotel.class.php",
+           url: "../hotel/validate",
            data: dataTosend,
            datatype :'json',
            success: function(data){
-             console.log(data);
              $("#error_dropzone_size").hide();
              $("#error_dropzone_extension").hide();
              $("#error_dropzone_invalid").hide();
              $("#error_dropzone").hide();
+             console.log(data);
              var json = JSON.parse(data);
              validate();
              if(json.error.fecha){
@@ -433,6 +432,7 @@ $( document ).ready(function() {
                $("#error_dropzone_invalid").show();
              }
              if(json.success){
+               alert("Registrado en la base de datos");
                window.location.href = json.redirect;
              }
 
@@ -487,7 +487,7 @@ $( document ).ready(function() {
 
   /* Dropzone */
   $("#dropzone").dropzone({
-    url: "modules/hotel/controller/controller_hotel.class.php?upload=true",
+    url: "../hotel/upload",
     addRemoveLinks: true,
     maxFileSize: 1000,
     dictResponseError: "An error has occurred on the server",
@@ -514,7 +514,7 @@ $( document ).ready(function() {
       var name = file.name;
       $.ajax({
         type: "POST",
-        url: "modules/hotel/controller/controller_hotel.class.php?delete=true",
+        url: "../hotel/delete",
         data: "filename=" + name,
         success: function (data) {
           //console.log(name);
@@ -522,7 +522,6 @@ $( document ).ready(function() {
           $('.msg').text('').removeClass('msg_ok');
           $('.msg').text('').removeClass('msg_error');
           $("#e_avatar").html("");
-
           var json = JSON.parse(data);
           //console.log(data);
           if (json.res === true) {
