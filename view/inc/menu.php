@@ -21,6 +21,7 @@
 									<ul>
 										<li><a href="<?php amigable('?module=home'); ?>">Homepage</a></li>
 										<li><a href="<?php amigable('?module=hotel'); ?>">Create</a></li>
+										<li><a href="<?php amigable('?module=contact'); ?>">Contact</a></li>
 										<li><a href="elements.html">Elements</a></li>
 										<li>
 											<span class="opener">Submenu</span>

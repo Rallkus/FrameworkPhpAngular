@@ -51,7 +51,18 @@ define('MODEL_PATH_HOME', SITE_ROOT . 'modules/home/model/');
 define('DAO_HOME', SITE_ROOT . 'modules/home/model/DAO/');
 define('BLL_HOME', SITE_ROOT . 'modules/home/model/BLL/');
 define('MODEL_HOME', SITE_ROOT . 'modules/home/model/model/');
-//define('JS_PATH_NEWS', SITE_PATH . 'modules/news/view/js/');
+
+//model contact
+define('FUNCTIONS_CONTACT', SITE_ROOT . 'modules/contact/utils/');
+define('MODEL_PATH_CONTACT', SITE_ROOT . 'modules/contact/model/');
+define('DAO_CONTACT', SITE_ROOT . 'modules/contact/model/DAO/');
+define('BLL_CONTACT', SITE_ROOT . 'modules/contact/model/BLL/');
+define('MODEL_CONTACT', SITE_ROOT . 'modules/contact/model/model/');
+define('CONTACT_JS_PATH', SITE_PATH . 'modules/contact/view/js/');
+define('CONTACT_LIB_PATH', SITE_PATH . 'modules/contact/view/lib/');
+define('CONTACT_IMG_PATH', SITE_PATH . 'modules/contact/view/img/');
+define('CONTACT_CSS_PATH', SITE_PATH . 'modules/contact/view/css/');
+
 
 //amigables
 define('URL_AMIGABLES', TRUE);

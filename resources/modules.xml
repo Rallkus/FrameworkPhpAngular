@@ -7,4 +7,8 @@
         <name>hotel</name>
         <uri>hotel</uri>
     </module>
+    <module>
+        <name>contact</name>
+        <uri>contact</uri>
+    </module>
 </modules>

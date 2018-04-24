@@ -45,7 +45,6 @@ $.ajax({
   data: dataTosend,
   datatype :'json',
   success: function(data){
-		console.log(data);
     var json = JSON.parse(data);
     var names = [];
     json.forEach(function(element) {
