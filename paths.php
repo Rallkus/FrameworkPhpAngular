@@ -63,6 +63,15 @@ define('CONTACT_LIB_PATH', SITE_PATH . 'modules/contact/view/lib/');
 define('CONTACT_IMG_PATH', SITE_PATH . 'modules/contact/view/img/');
 define('CONTACT_CSS_PATH', SITE_PATH . 'modules/contact/view/css/');
 
+//model list
+define('UTILS_LIST', SITE_ROOT . 'modules/list/utils/');
+//define('PRODUCTS_JS_LIB_PATH', SITE_PATH . 'modules/home/view/lib/');
+define('LIST_VIEW_PATH', SITE_ROOT . 'modules/list/view/');
+define('LIST_JS_PATH', SITE_PATH . 'modules/list/view/js/');
+define('MODEL_PATH_LIST', SITE_ROOT . 'modules/list/model/');
+define('DAO_LIST', SITE_ROOT . 'modules/list/model/DAO/');
+define('BLL_LIST', SITE_ROOT . 'modules/list/model/BLL/');
+define('MODEL_LIST', SITE_ROOT . 'modules/list/model/model/');
 
 //amigables
 define('URL_AMIGABLES', TRUE);

@@ -2,16 +2,21 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="<?php echo JS_PATH ?>bootpag.js"></script>
     <script type="text/javascript" src="<?php echo HOME_JS_PATH?>home.js"></script>
+    
+
 							<!-- Section -->
 								<section>
 									<header class="major">
 										<h2>Lo más visto</h2>
 									</header>
 									<section id="search" class="alt">
-									<form method="post" action="#">
+									<form method="post">
 										<input type="text" name="query" id="query" placeholder="Search" />
 									</form>
+                  <button class="btn" id="map">Míralo en gmaps!</button>
 								</section>
+                  <br>
+                  <br>
 									<div class="posts">
 									</div>
 									<div id="show_paginator"></div>
@@ -34,6 +39,7 @@
 								Comida: <div id="comida"></div></br>
 								Spa: <div id="spa"></div></br>
                 Observaciones: <div id="observaciones"></div></br>
+                <div id="map"></div>
         </div>
     </div>
 </section>

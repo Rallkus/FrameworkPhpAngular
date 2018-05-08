@@ -6,9 +6,12 @@ var total_pages = 500;
 var scroll = true;
 var hotel = [];
 
+
 $( document ).ready(function() {
-
-
+$("#map").on("click", function(e){
+	$(location).attr('href', '../../Hotel/list/')
+	//window.location.href = "/../Hotel/create/";
+});
 $(window).scroll(function() { //detect page scroll
 				if(($(window).scrollTop() + $(window).height() + 1 >= $(document).height()) && scroll){
           dataTosend='op='+"scroll"+'&page='+current_page;
@@ -115,7 +118,9 @@ $.ajax({
                 data: dataTosend,
                 datatype :'json',
                 success: function(data){
+									console.log(data);
                   json = JSON.parse(data);
+									console.log(json);
                          var info = [];
                          var image = "";
                          json.forEach(function(element) {
@@ -135,7 +140,7 @@ $.ajax({
                            $("#comida").html(element.comida);
                            $("#spa").html(element.spa);
                            $("#observaciones").html(element.observaciones);
-
+													 initMap();
                          });
 
 
@@ -205,7 +210,9 @@ $.ajax({
           data: dataTosend,
           datatype :'json',
           success: function(data){
+						console.log(data);
             json = JSON.parse(data);
+						console.log(json);
                    var info = [];
                    var image = "";
                    json.forEach(function(element) {
@@ -225,12 +232,12 @@ $.ajax({
                      $("#comida").html(element.comida);
                      $("#spa").html(element.spa);
                      $("#observaciones").html(element.observaciones);
-
                    });
 
 
 
                    $("#details_hotel").show();
+
                    $("#hotel_modal").dialog({
                        width: 850, //<!-- ------------- ancho de la ventana -->
                        height: 500, //<!--  ------------- altura de la ventana -->
@@ -253,6 +260,7 @@ $.ajax({
                            duration: 500
                        }
                    });
+
 
           }
         });

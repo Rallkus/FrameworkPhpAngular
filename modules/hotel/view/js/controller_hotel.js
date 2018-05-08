@@ -19,6 +19,7 @@ function get_comunidades(){
     //type: "GET",
     url: "http://apiv1.geoapi.es/comunidades?type=JSON&key="+Api_key+"&sandbox=0",
     success: function(data){
+      console.log(data);
       comunidades = Object.values(data.data);
       fill_comunidades();
     }

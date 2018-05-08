@@ -6,7 +6,7 @@
             <div class="col-sm-6">
                 <h1>Hola</h1>
                 <strong>Web de test del proyecto</strong>
-								<h2 class="BackHome"><a href="index.php">Back Home</a></h2>
+								<h2 class="BackHome"><a href="../../Hotel">Back Home</a></h2>
             </div>
 
         </div>
