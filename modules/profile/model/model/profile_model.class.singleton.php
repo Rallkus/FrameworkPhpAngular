@@ -2,12 +2,12 @@
 //echo json_encode("products model class");
 //exit;
 
-class list_model {
+class profile_model {
     private $bll;
     static $_instance;
 
     private function __construct() {
-        $this->bll = list_bll::getInstance();
+        $this->bll = profile_bll::getInstance();
     }
 
     public static function getInstance() {
@@ -16,11 +16,21 @@ class list_model {
         }
         return self::$_instance;
     }
-    public function obtain_best_offers(){
-        return $this->bll->obtain_best_offers_BLL();
+
+    public function count($arrArgument){
+        return $this->bll->count_BLL($arrArgument);
     }
-    public function obtain_offer($arrArgument){
-        return $this->bll->obtain_offer_BLL($arrArgument);
+    public function user($arrArgument){
+        return $this->bll->user_BLL($arrArgument);
+    }
+    public function count_email($arrArgument){
+        return $this->bll->count_email_BLL($arrArgument);
+    }
+    public function count_user($arrArgument){
+        return $this->bll->count_user_BLL($arrArgument);
+    }
+    public function register($arrArgument){
+        return $this->bll->register_BLL($arrArgument);
     }
     /*
     public function create_hotel_offer($arrArgument) {

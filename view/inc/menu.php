@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <h1>Hola</h1>
-                <strong>Web de test del proyecto</strong>
+                <strong><?php echo $_GET['module']; ?></strong>
 								<h2 class="BackHome"><a href="../../Hotel">Back Home</a></h2>
             </div>
 
@@ -20,32 +20,13 @@
 									</header>
 									<ul>
 										<li><a href="<?php amigable('?module=home'); ?>">Homepage</a></li>
-										<li><a href="<?php amigable('?module=hotel'); ?>">Create</a></li>
 										<li><a href="<?php amigable('?module=contact'); ?>">Contact</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
+										<!--<li><a href="<?php amigable('?module=login'); ?>">Login</a></li>
+										<li><a href="<?php amigable('?module=profile'); ?>">Profile</a></li>
+										<li><a href="<?php amigable('?module=hotel'); ?>">Create</a></li>
+										<li><a href="<?php amigable('?module=login&function=logout'); ?>">Logout</a></li> -->
+										<li id="menu_login">
+                </li>
 									</ul>
 								</nav>
 

@@ -1,12 +1,12 @@
 <?php
 
-class list_bll{
+class profile_bll{
     private $dao;
     private $db;
     static $_instance;
 
     private function __construct() {
-        $this->dao = list_DAO::getInstance();
+        $this->dao = profile_DAO::getInstance();
         $this->db = Db::getInstance();
     }
 
@@ -17,11 +17,20 @@ class list_bll{
         return self::$_instance;
     }
 
-    public function obtain_best_offers_BLL(){
-      return $this->dao->obtain_best_offers($this->db);
+    public function count_BLL($arrArgument){
+      return $this->dao->count($this->db, $arrArgument);
     }
-    public function obtain_offer_BLL($arrArgument){
-      return $this->dao->obtain_offer($this->db, $arrArgument);
+    public function user_BLL($arrArgument){
+      return $this->dao->user($this->db, $arrArgument);
+    }
+    public function count_email_BLL($arrArgument){
+      return $this->dao->count_email($this->db, $arrArgument);
+    }
+    public function count_user_BLL($arrArgument){
+      return $this->dao->count_user($this->db, $arrArgument);
+    }
+    public function register_BLL($arrArgument){
+      return $this->dao->register($this->db, $arrArgument);
     }
 
     /*public function create_hotel_BLL($arrArgument){

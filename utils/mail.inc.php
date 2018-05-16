@@ -9,7 +9,7 @@
         switch ($arr['type']) {
             case 'alta':
                 $subject = 'Tu Alta en Rural_Shop';
-                $ruta = "<a href='" . amigable("?module=login&function=activar&aux=A" . $arr['token'], true) . "'>aqu&iacute;</a>";
+                $ruta = "<a href='" . amigable("?module=login&function=activar&aux=" . $arr['tokken'], true) . "'>aqu&iacute;</a>";
                 $body = 'Gracias por unirte a nuestra aplicaci&oacute;n<br> Para finalizar el registro, pulsa ' . $ruta;
                 break;
 

@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="<?php echo CSS_PATH ?>main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script src="<?php echo JS_PATH_UTILS ?>amigables.js"></script>
     <script src="<?php echo JS_PATH ?>jquery.min.js"></script>
     <script src="<?php echo JS_PATH ?>skel.min.js"></script>
     <script src="<?php echo JS_PATH ?>util.js"></script>
@@ -23,6 +24,9 @@
   	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
   	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<link rel="stylesheet" href="<?php echo CSS_PATH ?>style.css" />
+		<script src="<?php echo JS_PATH_UTILS ?>cookies.js"></script>
+		<script src="<?php echo JS_PATH ?>util.js"></script>
+		<script src="<?php echo LOGIN_JS_PATH ?>init.js"></script>
 	</head>
 <body>
   <div id="wrapper">

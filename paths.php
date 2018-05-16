@@ -12,6 +12,9 @@ define('CSS_PATH', SITE_PATH . 'view/assets/css/');
 //JS
 define('JS_PATH', SITE_PATH . 'view/assets/js/');
 
+//JS_UTILS
+define('JS_PATH_UTILS', SITE_PATH . 'view/js/');
+
 //IMG
 define('IMG_PATH', SITE_PATH . 'view/img/');
 
@@ -33,6 +36,8 @@ define('RESOURCES', SITE_ROOT . 'resources/');
 define('MEDIA_PATH', SITE_ROOT . 'media/');
 //utils
 define('UTILS', SITE_ROOT . 'utils/');
+//libs
+define('LIBS', SITE_ROOT . 'libs/');
 
 //model hotel
 define('FUNCTIONS_HOTEL', SITE_ROOT . 'modules/hotel/utils/');
@@ -72,6 +77,26 @@ define('MODEL_PATH_LIST', SITE_ROOT . 'modules/list/model/');
 define('DAO_LIST', SITE_ROOT . 'modules/list/model/DAO/');
 define('BLL_LIST', SITE_ROOT . 'modules/list/model/BLL/');
 define('MODEL_LIST', SITE_ROOT . 'modules/list/model/model/');
+
+//model login
+define('UTILS_LOGIN', SITE_ROOT . 'modules/login/utils/');
+//define('PRODUCTS_JS_LIB_PATH', SITE_PATH . 'modules/home/view/lib/');
+define('LOGIN_VIEW_PATH', SITE_ROOT . 'modules/login/view/');
+define('LOGIN_JS_PATH', SITE_PATH . 'modules/login/view/js/');
+define('MODEL_PATH_LOGIN', SITE_ROOT . 'modules/login/model/');
+define('DAO_LOGIN', SITE_ROOT . 'modules/login/model/DAO/');
+define('BLL_LOGIN', SITE_ROOT . 'modules/login/model/BLL/');
+define('MODEL_LOGIN', SITE_ROOT . 'modules/login/model/model/');
+
+//model profile
+define('PROFILE_LOGIN', SITE_ROOT . 'modules/profile/utils/');
+//define('PRODUCTS_JS_LIB_PATH', SITE_PATH . 'modules/home/view/lib/');
+define('PROFILE_VIEW_PATH', SITE_ROOT . 'modules/profile/view/');
+define('PROFILE_JS_PATH', SITE_PATH . 'modules/profile/view/js/');
+define('MODEL_PATH_PROFILE', SITE_ROOT . 'modules/profile/model/');
+define('DAO_PROFILE', SITE_ROOT . 'modules/profile/model/DAO/');
+define('BLL_PROFILE', SITE_ROOT . 'modules/profile/model/BLL/');
+define('MODEL_PROFILE', SITE_ROOT . 'modules/profile/model/model/');
 
 //amigables
 define('URL_AMIGABLES', TRUE);

@@ -17,7 +17,7 @@ function initMap() {
   var json = JSON.parse(data);
   json.forEach(function(element) {
     hotel.push(element);
-    var content = element.nombre + " <br> "+element.municipio+" <br> <div class='button id' id="+ element.id +">More</div>";
+    var content = element.nombre + " <br> "+element.municipio+" <br> <a href="+ amigable2('?module=list&function=details&aux='+element.id) +">Details</a>";
     $.ajax({
       url: "https://maps.googleapis.com/maps/api/geocode/json?address="+element.municipio+"&key=AIzaSyDPKdo_uyKw27vzZ4xB-4xRUjkMkemGZCQ",
       success: function(data){

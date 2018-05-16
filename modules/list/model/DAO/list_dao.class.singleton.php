@@ -20,5 +20,10 @@ class list_DAO {
       $stmt = $db->ejecutar($sql);
       return $db->listar($stmt);
     }
+    public function obtain_offer($db, $arrArgument){
+      $sql = "SELECT * FROM oferta_hotel WHERE id='$arrArgument'";
+      $stmt = $db->ejecutar($sql);
+      return $db->listar($stmt);
+    }
 
 }//End productDAO
