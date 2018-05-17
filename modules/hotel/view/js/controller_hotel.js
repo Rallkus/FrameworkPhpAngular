@@ -433,8 +433,8 @@ $( document ).ready(function() {
                $("#error_dropzone_invalid").show();
              }
              if(json.success){
-               alert("Registrado en la base de datos");
-               window.location.href = json.redirect;
+               toastr.info("Registrado en la base de datos");
+               setTimeout(function(){ window.location.href = json.redirect; }, 1500);
              }
 
 

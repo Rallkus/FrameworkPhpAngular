@@ -47,8 +47,10 @@ $( document ).ready(function() {
                  $("#error_cuenta").hide();
                  Tools.eraseCookie("user");
                  Tools.createCookie("user", json.id + "|" + json.avatar + "|" + username, 1);
-                 alert("Bienvenido "+username);
-                 $(location).attr('href', '../../Hotel/home/')
+                 toastr.options.fadeOut = 1500;
+                 toastr.info("Bienvenido "+username);
+                 setTimeout(function(){ $(location).attr('href', '../../Hotel/home/') }, 1500);
+
                }
              }
            }

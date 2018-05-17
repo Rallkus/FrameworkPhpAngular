@@ -8,15 +8,15 @@
 
         switch ($arr['type']) {
             case 'alta':
-                $subject = 'Tu Alta en Rural_Shop';
+                $subject = 'Tu Alta en Hotel';
                 $ruta = "<a href='" . amigable("?module=login&function=activar&aux=" . $arr['tokken'], true) . "'>aqu&iacute;</a>";
                 $body = 'Gracias por unirte a nuestra aplicaci&oacute;n<br> Para finalizar el registro, pulsa ' . $ruta;
                 break;
 
             case 'modificacion':
-                $subject = 'Tu Nuevo Password en Rural_Shop<br>';
-                $ruta = '<a href="' . amigable("?module=login&function=activar&aux=F" . $arr['token'], true) . '">aqu&iacute;</a>';
-                $body = 'Para recordar tu password pulsa ' . $ruta;
+                $subject = 'Olvidar contraseña<br>';
+                $ruta = '<a href="' . amigable("?module=login&function=&aux=F" . $arr['token'], true) . '">aqu&iacute;</a>';
+                $body = ' ' . $ruta;
                 break;
 
             case 'contact':

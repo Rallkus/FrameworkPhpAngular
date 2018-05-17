@@ -34,8 +34,9 @@ $(document).ready(function () {
            data: dataTosend,
            datatype :'json',
            success: function(data){
-             alert("Tu cuenta ha sido confirmada");
-             $(location).attr('href', '../../../../Hotel/home/')
+             toastr.info("Tu cuenta ha sido confirmada");
+             setTimeout(function(){ $(location).attr('href', '../../../../Hotel/home/') }, 1500);
+
            }
            //$(location).attr('href', '../../../Hotel/login/')
          });
@@ -45,18 +46,4 @@ $(document).ready(function () {
     console.log('url7: ' + url[7]); //begin
     console.log('url8: ' + url[8]); //reg
 
-    if (url[7] === "activar" && url[8].substring(0, 3) == "Ver"){
-        $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Su email ha sido verificado, disfrute de nuestros servicios</div>");
-    }else if(url[8]==="503"){
-         $("#alertbanner").html("<a href='#alertbanner' class='alertbanner alertbannerErr'>Hay un problema en la base de datos, inténtelo más tarde</div>");
-    }else if (url[7] === "begin") {
-        if (url[8] === "reg"){
-            $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Se le ha enviado un email para verificar su cuenta</div>");
-        }else if (url[8] === "rest"){
-            $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Se ha cambiado satisfactoriamente su contraseña</div>");
-        }
-    } else if (url[7] === "profile"){
-        if (url[8] === "done")
-            $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Usuario correctamente actualizado</div>");
-    }
     });

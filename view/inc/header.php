@@ -27,6 +27,9 @@
 		<script src="<?php echo JS_PATH_UTILS ?>cookies.js"></script>
 		<script src="<?php echo JS_PATH ?>util.js"></script>
 		<script src="<?php echo LOGIN_JS_PATH ?>init.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 	</head>
 <body>
   <div id="wrapper">

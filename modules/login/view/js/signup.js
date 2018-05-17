@@ -46,8 +46,8 @@ $( document ).ready(function() {
                $("#error_email_exists").hide();
              }
              if(!json.email && !json.username){
-               alert("Tu cuenta ha sido creada, te hemos enviado un email para que confirmes tu cuenta");
-               $(location).attr('href', '../../Hotel/login/')
+               toastr.info("Tu cuenta ha sido creada, te hemos enviado un email para que confirmes tu cuenta");
+               setTimeout(function(){ $(location).attr('href', '../../Hotel/login/') }, 2000);
              }
            }
          });
