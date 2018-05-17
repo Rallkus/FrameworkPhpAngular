@@ -20,6 +20,15 @@ class profile_bll{
     public function count_BLL($arrArgument){
       return $this->dao->count($this->db, $arrArgument);
     }
+    public function get_birth_BLL($arrArgument){
+      return $this->dao->get_birth($this->db, $arrArgument);
+    }
+    public function get_birth_social_BLL($arrArgument){
+      return $this->dao->get_birth_social($this->db, $arrArgument);
+    }
+    public function update_birth_BLL($arrArgument){
+      return $this->dao->update_birth($this->db, $arrArgument);
+    }
     public function user_BLL($arrArgument){
       return $this->dao->user($this->db, $arrArgument);
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2018 a las 18:08:16
+-- Tiempo de generación: 17-05-2018 a las 19:49:44
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -93,7 +93,27 @@ INSERT INTO `oferta_hotel` (`id`, `imagen`, `nombre`, `fecha_entrada`, `fecha_sa
 (42, '/Hotel/media/default-avatar.png', 'dsa', '25/04/2018', '28/04/2018', 'ANDALUCÃA', 'CÃDIZ', 'ALCALÃ', '3', '', 'true', '', 'true', '', '', 'das', '32'),
 (43, '/Hotel/media/default-avatar.png', 'gfdsa', '25/04/2018', '28/04/2018', 'ARAGÃ“N', 'HUESCA', 'ALBALATILLO', '3', '', '', '', 'true', '', 'true', 'das', '43'),
 (44, '/Hotel/media/default-avatar.png', 'dsa', '25/04/2018', '28/04/2018', 'ARAGÃ“N', 'ZARAGOZA', 'ACERED', '3', '', 'true', '', '', '', 'true', 'das', '32'),
-(45, '/Hotel/media/default-avatar.png', 'dsa', '23/05/2018', '24/05/2018', 'ARAGÃ“N', 'TERUEL', 'ALIAGA', '3', 'true', '', '', '', '', '', 'das', '2');
+(45, '/Hotel/media/default-avatar.png', 'dsa', '23/05/2018', '24/05/2018', 'ARAGÃ“N', 'TERUEL', 'ALIAGA', '3', 'true', '', '', '', '', '', 'das', '2'),
+(46, '/Hotel/media/default-avatar.png', 'a', '24/05/2018', '31/05/2018', 'ARAGÃ“N', 'TERUEL', 'ABEJUELA', '5', '', 'true', '', '', '', '', 'ds', '22'),
+(47, '/Hotel/media/default-avatar.png', 'd', '24/05/2018', '31/05/2018', 'ARAGÃ“N', 'HUESCA', 'ABIZANDA', '3', '', '', '', 'true', '', '', 'ds', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recover_pass`
+--
+
+CREATE TABLE `recover_pass` (
+  `email` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `tokken` varchar(255) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `recover_pass`
+--
+
+INSERT INTO `recover_pass` (`email`, `tokken`) VALUES
+('destrictor.gg@gmail.com', '0ab5b2c852d1a935feb4ae95f8f41eaa');
 
 -- --------------------------------------------------------
 
@@ -108,16 +128,24 @@ CREATE TABLE `user` (
   `pass` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `tokken` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `activo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8_spanish_ci NOT NULL
+  `avatar` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `birthday` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id`, `nombre`, `email`, `pass`, `tokken`, `activo`, `avatar`) VALUES
-(28, 'a', 'destrictor.gg@gmail.com', '$2y$10$eeFj/CRchFbnb7NYbLXVrOVI1NWB9lfKXxET0d//1XrHvgFJh001i', '949e6f49eb1160b6ec79db990b189f91', 'yes', '/Hotel/media/default-avatar.png'),
-(29, 's', 'a@gmail.com', '$2y$10$W77jpUr5T7Y734YB.AnXLub0HxpJA9MdBFKQ/lW3t39m53Qh4rq12', 'd6649d306a2573fff1cad9cdaba85c18', 'no', '/Hotel/media/default-avatar.png');
+INSERT INTO `user` (`id`, `nombre`, `email`, `pass`, `tokken`, `activo`, `avatar`, `birthday`) VALUES
+(28, 'a', 'destrictor.gg@gmail.com', '$2y$10$7yumVeVRrSekxiRllsBTcugmmsur9VzoIglVoXQIJva5Z/zDO.IR2', '949e6f49eb1160b6ec79db990b189f91', 'yes', '/Hotel/media/default-avatar.png', '28/05/2018'),
+(29, 's', 'a@gmail.com', '$2y$10$W77jpUr5T7Y734YB.AnXLub0HxpJA9MdBFKQ/lW3t39m53Qh4rq12', 'd6649d306a2573fff1cad9cdaba85c18', 'no', '/Hotel/media/default-avatar.png', ''),
+(30, 'admin', 'aa@gmail.com', '$2y$10$ikQoeHqcYgTAemW3csP.Re3uIyduTzcyt26g54uzsMl.U22Pu6Xni', '1000aa5052087703425378c1d6870c39', 'no', '/Hotel/media/default-avatar.png', ''),
+(31, 'dddd', 'ass@gmail.com', '$2y$10$xMNo0UjvpK7D8WVgGwGW9ua9g2IGOMoPOGVLx.J5Aq4TV43z.72la', '051b2f8d4d8470a7e619d522ef8951bc', 'no', '/Hotel/media/default-avatar.png', ''),
+(32, 'cccccccc', 'aaaa@gmail.com', '$2y$10$ffhpvRr/O/gGzU.Ywy8tJuhehfYXnfcFvaHd5mmjybQ2Q/r/.wVIu', '5ba20d84d2af864ede3b38de8551c0d9', 'no', '/Hotel/media/default-avatar.png', ''),
+(33, 'f', 'ajh@gmail.com', '$2y$10$wzTo68a8tGBHlzPYUdRI/eKINU6/ubbFeQU8LYDzMb5nGFP8Kjsj6', 'bb1bf0081c7e7ec83b9250d9faf788b6', 'no', '/Hotel/media/default-avatar.png', ''),
+(34, 'aakkm', 'lkka@gmail.com', '$2y$10$Lji0yWyvZoYkRydd30lbC.DIucHkUlQjZKEGHI5mdEp3JZ6WgV0Z6', 'e5769355e42f44c420384794bb7121fc', 'no', '/Hotel/media/default-avatar.png', ''),
+(35, 'sda', 'a123@gmail.com', '$2y$10$u5T5AFWED6t7vDPGAwJwNOA/QUMwgBfC4GHKg5hNm/hML28M5fGa6', '0e0e0a954f4bca9f359c6528f67fd2a9', 'no', '/Hotel/media/default-avatar.png', ''),
+(36, '43f', 'b@gmail.com', '$2y$10$hlPGlOSYLhpOyAfBDJ7gK.mlZJEzs.RmXwy43AYIup6tAq3uAazga', 'cbeebd464cd364794c6ea1d756bb3951', 'no', '/Hotel/media/default-avatar.png', '');
 
 -- --------------------------------------------------------
 
@@ -129,16 +157,17 @@ CREATE TABLE `user_social` (
   `id` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `username` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8_spanish_ci NOT NULL
+  `avatar` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `birthday` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `user_social`
 --
 
-INSERT INTO `user_social` (`id`, `email`, `username`, `avatar`) VALUES
-('02ipeqnF2QVtbqSDxDuGv0HlTF22', '', 'Yo', 'https://pbs.twimg.com/profile_images/378800000231335312/b572a21c469c299ce6288ab07b20ee33_normal.jpeg'),
-('Wdn6RO3rUbeKeUidZo3jrtIjWuw1', 'sergiohuertas1@hotmail.com', 'Sergio Huertas', 'https://graph.facebook.com/825260184347119/picture');
+INSERT INTO `user_social` (`id`, `email`, `username`, `avatar`, `birthday`) VALUES
+('02ipeqnF2QVtbqSDxDuGv0HlTF22', '', 'Yo', 'https://pbs.twimg.com/profile_images/378800000231335312/b572a21c469c299ce6288ab07b20ee33_normal.jpeg', ''),
+('Wdn6RO3rUbeKeUidZo3jrtIjWuw1', 'sergiohuertas1@hotmail.com', 'Sergio Huertas', 'https://graph.facebook.com/825260184347119/picture', '');
 
 --
 -- Índices para tablas volcadas
@@ -170,12 +199,12 @@ ALTER TABLE `user_social`
 -- AUTO_INCREMENT de la tabla `oferta_hotel`
 --
 ALTER TABLE `oferta_hotel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

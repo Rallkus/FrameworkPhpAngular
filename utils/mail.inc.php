@@ -15,7 +15,7 @@
 
             case 'modificacion':
                 $subject = 'Olvidar contraseña<br>';
-                $ruta = '<a href="' . amigable("?module=login&function=&aux=F" . $arr['token'], true) . '">aqu&iacute;</a>';
+                $ruta = '<a href="' . amigable("?module=login&function=cambiar_pass", true) . $arr['tokken'].'">aqu&iacute;</a>';
                 $body = ' ' . $ruta;
                 break;
 

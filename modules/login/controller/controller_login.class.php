@@ -21,6 +21,55 @@ class controller_login {
         require_once(VIEW_PATH_INC . "footer.html");
         require_once(VIEW_PATH_INC . "menu.php");
     }
+    function recover_pass() {
+        require_once(VIEW_PATH_INC . "header.php");
+        loadView('modules/login/view/', 'recover_pass.html');
+        require_once(VIEW_PATH_INC . "footer.html");
+        require_once(VIEW_PATH_INC . "menu.php");
+    }
+    function cambiar_pass() {
+        require_once(VIEW_PATH_INC . "header.php");
+        loadView('modules/login/view/', 'cambiar_pass.html');
+        require_once(VIEW_PATH_INC . "footer.html");
+        require_once(VIEW_PATH_INC . "menu.php");
+    }
+    function update_pass() {
+      $error = array('tokken' => false, );
+      $user = array('pass' => "", 'email' => "", );
+      $arrValue = loadModel(MODEL_LOGIN, "login_model", "count_tokken", $_POST['tokken']);
+      if($arrValue[0]['number']==0){
+        $error['tokken']=true;
+      }else{
+        $arrValue = loadModel(MODEL_LOGIN, "login_model", "select_email", $_POST['tokken']);
+        $user['email']=$arrValue[0]['email'];
+        $user['pass'] = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+        $arrValue = loadModel(MODEL_LOGIN, "login_model", "update_pass", $user);
+      }
+      echo json_encode($error);
+      exit();
+    }
+    function email() {
+      $error = array('email' => false,);
+      $email = $_POST['email'];
+      $arrValue = loadModel(MODEL_LOGIN, "login_model", "count_email", $email);
+      if($arrValue[0]['number']==0){
+        $error['email']=true;
+      }else{
+        $tokken = md5(uniqid(rand(), true));
+        $email_mailgun = array('type' => "modificacion", 'tokken' => $tokken,'inputEmail' => $email,);
+        enviar_email($email_mailgun);
+        $arrValue = loadModel(MODEL_LOGIN, "login_model", "count_email_recover", $email);
+        $data = array('email' => $email, 'tokken' => $tokken,);
+        if($arrValue[0]['number']==0){
+          $arrValue = loadModel(MODEL_LOGIN, "login_model", "insert_recover", $data);
+        }else{
+          $arrValue = loadModel(MODEL_LOGIN, "login_model", "update_recover", $data);
+        }
+      }
+      echo json_encode($error);
+
+      exit();
+    }
     function login_social() {
       $user = $_POST;
       if($user['email']==null){
@@ -42,15 +91,6 @@ class controller_login {
       if($arrValue[0]['number']==1){
         $arrValue = loadModel(MODEL_LOGIN, "login_model", "activate_tokken", $tokken);
       }
-      /*if($user['email']==null){
-        $user['email']="";
-      }
-      echo $user['email'];
-      $arrValue = loadModel(MODEL_LOGIN, "login_model", "count_social", $user['id']);
-      echo $arrValue[0]['number'];
-      if($arrValue[0]['number']==0){
-        $arrValue = loadModel(MODEL_LOGIN, "login_model", "login_social", $user);*/
-      //}
 
       exit();
     }

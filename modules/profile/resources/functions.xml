@@ -5,19 +5,11 @@
         <uri>begin</uri>
     </function>
     <function>
-        <name>register</name>
-        <uri>register</uri>
+        <name>get_birth</name>
+        <uri>get_birth</uri>
     </function>
     <function>
-        <name>register_user</name>
-        <uri>register_user</uri>
-    </function>
-    <function>
-        <name>login</name>
-        <uri>login</uri>
-    </function>
-    <function>
-        <name>logout</name>
-        <uri>logout</uri>
+        <name>update_birth</name>
+        <uri>update_birth</uri>
     </function>
 </functions>

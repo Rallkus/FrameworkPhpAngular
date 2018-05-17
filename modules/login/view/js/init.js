@@ -35,10 +35,9 @@ $(document).ready(function () {
            datatype :'json',
            success: function(data){
              toastr.info("Tu cuenta ha sido confirmada");
-             setTimeout(function(){ $(location).attr('href', '../../../../Hotel/home/') }, 1500);
+             setTimeout(function(){ $(location).attr('href', '../../../../Hotel/login/') }, 1500);
 
            }
-           //$(location).attr('href', '../../../Hotel/login/')
          });
     }
     console.log('url5: ' + url[5]); //JoinElderly

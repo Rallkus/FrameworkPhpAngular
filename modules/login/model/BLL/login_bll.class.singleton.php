@@ -20,8 +20,17 @@ class login_bll{
     public function count_BLL($arrArgument){
       return $this->dao->count($this->db, $arrArgument);
     }
+    public function update_pass_BLL($arrArgument){
+      return $this->dao->update_pass($this->db, $arrArgument);
+    }
+    public function select_email_BLL($arrArgument){
+      return $this->dao->select_email($this->db, $arrArgument);
+    }
     public function activate_tokken_BLL($arrArgument){
       return $this->dao->activate_tokken($this->db, $arrArgument);
+    }
+    public function update_recover_BLL($arrArgument){
+      return $this->dao->update_recover($this->db, $arrArgument);
     }
     public function count_social_BLL($arrArgument){
       return $this->dao->count_social($this->db, $arrArgument);
@@ -31,6 +40,9 @@ class login_bll{
     }
     public function user_BLL($arrArgument){
       return $this->dao->user($this->db, $arrArgument);
+    }
+    public function count_email_recover_BLL($arrArgument){
+      return $this->dao->count_email_recover($this->db, $arrArgument);
     }
     public function count_email_BLL($arrArgument){
       return $this->dao->count_email($this->db, $arrArgument);
@@ -43,6 +55,9 @@ class login_bll{
     }
     public function login_social_BLL($arrArgument){
       return $this->dao->login_social($this->db, $arrArgument);
+    }
+    public function insert_recover_BLL($arrArgument){
+      return $this->dao->insert_recover($this->db, $arrArgument);
     }
 
     /*public function create_hotel_BLL($arrArgument){

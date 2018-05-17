@@ -20,6 +20,11 @@ class login_DAO {
       $stmt = $db->ejecutar($sql);
       return $db->listar($stmt);
     }
+    public function select_email($db, $arrArgument){
+      $sql = "SELECT email as email FROM recover_pass WHERE tokken = '$arrArgument'";
+      $stmt = $db->ejecutar($sql);
+      return $db->listar($stmt);
+    }
     public function count_social($db, $arrArgument){
       $sql = "SELECT COUNT(*) as number FROM user_social WHERE id = '$arrArgument'";
       $stmt = $db->ejecutar($sql);
@@ -30,13 +35,30 @@ class login_DAO {
       $stmt = $db->ejecutar($sql);
       return $db->listar($stmt);
     }
+    public function count_email_recover($db, $arrArgument){
+      $sql = "SELECT COUNT(*) as number FROM recover_pass WHERE email = '$arrArgument'";
+      $stmt = $db->ejecutar($sql);
+      return $db->listar($stmt);
+    }
     public function count_tokken($db, $arrArgument){
-      $sql = "SELECT COUNT(*) as number FROM user WHERE tokken = '$arrArgument'";
+      $sql = "SELECT COUNT(*) as number FROM recover_pass WHERE tokken = '$arrArgument'";
       $stmt = $db->ejecutar($sql);
       return $db->listar($stmt);
     }
     public function activate_tokken($db, $arrArgument){
       $sql = "UPDATE user SET activo = 'yes' WHERE tokken = '$arrArgument'";
+      return $db->ejecutar($sql);
+    }
+    public function update_pass($db, $arrArgument){
+      $email=$arrArgument['email'];
+      $pass=$arrArgument['pass'];
+      $sql = "UPDATE user SET pass = '$pass' WHERE email = '$email'";
+      return $db->ejecutar($sql);
+    }
+    public function update_recover($db, $arrArgument){
+      $email = $arrArgument['email'];
+      $tokken= $arrArgument['tokken'];
+      $sql = "UPDATE recover_pass SET tokken = '$tokken' WHERE email = '$email'";
       return $db->ejecutar($sql);
     }
     public function count_user($db, $arrArgument){
@@ -71,6 +93,13 @@ class login_DAO {
       $sql="INSERT INTO user_social (id, email, username,"
               . " avatar) VALUES ('$id', "
               . "'$email', '$nombre', '$avatar')";
+      return $db->ejecutar($sql);
+    }
+    public function insert_recover($db, $arrArgument){
+      $email=$arrArgument['email'];
+      $tokken=$arrArgument['tokken'];
+      $sql="INSERT INTO recover_pass (email, tokken"
+              . ") VALUES ('$email', '$tokken')";
       return $db->ejecutar($sql);
     }
 

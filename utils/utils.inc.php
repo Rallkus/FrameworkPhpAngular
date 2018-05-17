@@ -9,7 +9,7 @@
         die('<script>top.location.href="'.$url.'";</script>');
     }
 
-    
+
     function amigable($url, $return = false) {
     $amigableson = URL_AMIGABLES;
     $link = "";

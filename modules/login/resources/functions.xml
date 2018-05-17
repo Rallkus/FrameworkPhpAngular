@@ -28,4 +28,20 @@
         <name>activar</name>
         <uri>activar</uri>
     </function>
+    <function>
+        <name>recover_pass</name>
+        <uri>recover_pass</uri>
+    </function>
+    <function>
+        <name>update_pass</name>
+        <uri>update_pass</uri>
+    </function>
+    <function>
+        <name>cambiar_pass</name>
+        <uri>cambiar_pass</uri>
+    </function>
+    <function>
+        <name>email</name>
+        <uri>email</uri>
+    </function>
 </functions>

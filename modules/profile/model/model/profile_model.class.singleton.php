@@ -20,6 +20,15 @@ class profile_model {
     public function count($arrArgument){
         return $this->bll->count_BLL($arrArgument);
     }
+    public function get_birth($arrArgument){
+        return $this->bll->get_birth_BLL($arrArgument);
+    }
+    public function get_birth_social($arrArgument){
+        return $this->bll->get_birth_social_BLL($arrArgument);
+    }
+    public function update_birth($arrArgument){
+        return $this->bll->update_birth_BLL($arrArgument);
+    }
     public function user($arrArgument){
         return $this->bll->user_BLL($arrArgument);
     }
